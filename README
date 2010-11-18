@@ -1,21 +1,21 @@
 Open source project for P3GO supported by G-TEAM
 
-The P3GO MCU is MIPS core, so you need a cross compiler toolchain for your host system. You can download it from link as blow. When you decompress compiler tools, you also need to add the installed path to your enviroment settings, like "export PATH=$PATH:~mips_compile/bin". 
-Cygwin on Windows:
+The core of P3GO MCU is MIPS, so you need a cross compiler toolchain for your host system. You can download it from the link as blow. When you decompress compiler tools, you also need to add the installed path to your environment settings, like "export PATH=$PATH:~mips_compile/bin". 
+Cygwin on Windows: 
 ftp://ftp.ingenic.cn/3sw/02rtos/00toolchain/mipsel-gcc4.1-cygwin-nopic.tar.bz2
 Linux:
 ftp://ftp.ingenic.cn/3sw/02rtos/00toolchain/mipsel-4.1.2-nopic.tar.bz2
 
-Directory struct
+Directory structure
 inc			--		common include directory
-miniclib	--	small c library
-mtv_50		--	main project directory
-release		--	compile binary directory
-soc_src		--	some driver and system boot code
-src				--	ucos and mips header files
+miniclib	    --	    small c library
+mtv_50		--	    main project directory
+release		--	    compile binary directory
+soc_src		--	    some driver and system boot code
+src		    --	ucos and mips header files
 
 How to compile?
-There is some example project in the mtv_50 directory, you can try to compile these by youselve. 
+There is some example project in the mtv_50 directory; you can try to compile these by yourselves. 
 
   mtv_50/loader -- Hermers V4B payload
   mtv_50/loaderPL3  -- KaKaroto PL3 payload
@@ -23,4 +23,4 @@ There is some example project in the mtv_50 directory, you can try to compile th
 You can enter mtv_50/loader and "make build", then will generate homebrew.bin and update.bin in release directory if there is no error occured.
 
 How to update your P3GO?
-First you need update your P3GO to development version (please go www.gamebox.hk to download a development version update binary), then you can put you compiled update.bin to P3GO buildin disk not TF card disk, then re-plug your device to complete update. Note if you want to your custom firmware work, you must insert a TF card in the P3GO TF slot.
+First you need update your P3GO to development version (please go to www.gamebox.hk to download a development version update binary), then you can put you compiled update.bin to P3GO buildin disk not TF card disk, then re-plug your device to complete update. Note if you want to your custom firmware work, you must insert a TF card in the P3GO TF slot.
