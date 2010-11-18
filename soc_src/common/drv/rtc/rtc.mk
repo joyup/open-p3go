@@ -1,0 +1,4 @@
+SOURCES	+= nortc.c
+CFLAGS	+= -DRTCTYPE=$(RTCTYPE)
+CFLAGS	+= -I$(RTCDIR)
+VPATH   += $(RTCDIR)

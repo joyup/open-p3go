@@ -1,0 +1,7 @@
+
+SOURCES	+= $(wildcard $(MMCDIR)/*.c)
+CFLAGS	+= -DMMCTYPE=$(MMCTYPE)
+CFLAGS	+= -I$(MMCDIR)
+VPATH   += $(MMCDIR)
+
+LIBS += $(SOCCOMMONLIBS)/mmc_lib.a
