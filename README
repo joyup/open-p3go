@@ -43,6 +43,7 @@ step4:
 	restart cygwin and enter your open-p3go directory and 
 	
 	#cd mtv_50/loader
+	#make clean
 	#make build
 	
 	then if no error occur, you will get a homebrew.bin and update.bin in open-p3go/release.
