@@ -9,7 +9,7 @@ ftp://ftp.ingenic.cn/3sw/02rtos/00toolchain/mipsel-4.1.2-nopic.tar.bz2
 Directory structure
 inc			--		common include directory
 miniclib	    --	    small c library
-mtv_50		--	    main project directory
+mtv_50		--	    main project directory, there has already some payload projects, like hermes,kakroto,asbestos
 release		--	    compile binary directory
 soc_src		--	    some driver and system boot code
 src		    --	ucos and mips header files
@@ -19,8 +19,30 @@ There is some example project in the mtv_50 directory; you can try to compile th
 
   mtv_50/loader -- Hermers V4B payload
   mtv_50/loaderPL3  -- KaKaroto PL3 payload
+  mtv_50/asbestos	--	WIP:porting asbestos loader
 
 You can enter mtv_50/loader and "make build", then will generate homebrew.bin and update.bin in release directory if there is no error occured.
 
 How to update your P3GO?
 First you need update your P3GO to development version (please go to www.gamebox.hk to download a development version update binary), then you can put you compiled update.bin to P3GO buildin disk not TF card disk, then re-plug your device to complete update. Note if you want to your custom firmware work, you must insert a TF card in the P3GO TF slot.
+
+Example setup steps on cygwin
+step1:
+	Download and install cygwin to c:\cygwin on your pc, specialy you must selected and installed the development packet.
+step2:
+	Download the mipsel-gcc4.1-cygwin-nopic.tar.bz2 from above link and extract to c:\cygwin\opt, and then "mipseltools-nopic" directory will be created in c:\cygwin\opt.
+
+	#cd /opt
+	#bzip2 -d mipsel-gcc4.1-cygwin-nopic.tar.bz2
+	#tar xf mipsel-gcc4.1-cygwin-nopic.tar
+
+step3:
+	edit C:\cygwin\home\Administrator\.bashrc and add "export PATH=/opt/mipseltools-nopic/bin:$PATH" to last of the bashrc file.
+	
+step4:
+	restart cygwin and enter your open-p3go directory and 
+	
+	#cd mtv_50/loader
+	#make build
+	
+	then if no error occur, you will get a homebrew.bin and update.bin in open-p3go/release.
