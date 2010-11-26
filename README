@@ -26,6 +26,20 @@ You can enter mtv_50/loader and "make build", then will generate homebrew.bin an
 How to update your P3GO?
 First you need update your P3GO to development version (please go to www.gamebox.hk to download a development version update binary), then you can put you compiled update.bin to P3GO buildin disk not TF card disk, then re-plug your device to complete update. Note if you want to your custom firmware work, you must insert a TF card in the P3GO TF slot.
 
+How to import a new project?
+Simply you just only copy a loader or loaderPL3 project to a new directory, then import other open source project to the new project. Note by default, your code size is limited 512KB, if you want to use more memory, please referense "How to modify memory space".
+
+How to modify memory space
+By default, used memory address space range of your program is 0x80300000 - 0x807FFFFF. The P3GO buildin loader program will load your code to 0x80300000 when booting, and then jump in and run it. So in demo project, such as loader and loaderPL3, default code size is limited to 512KB by link.xn, i.e. your code address range is 0x80300000 - 0x80380000, and memory space above 0x80380000 is used as heap of ucos. 
+In the Configrure.mak file, we also defined some macro to define several memory space size.
+DRVMEMADDR := 0x80380000
+		this is heap space for driver and os. you can call alloc/dealloc function to get a heap memory space in this memory space.
+DRVMEMLEN := 0x40000
+		driver heap size
+APPMEMADDR := 0x803C0000
+		this is module heap space for application. Demo project not use that space, but you can use it feel free.
+So if you want to modify memory space setting, you need to change 2 files, link.xn and Configure.mak. In link.xn, you need to assign memory size for your program, and also need change the DRVMEMADDR setting in Configure.mak. Please careful, DRVMEMADDR must greater than your code size + 0x80300000.
+
 Example setup steps on cygwin
 step1:
 	Download and install cygwin to c:\cygwin on your pc, specialy you must selected and installed the development packet.
